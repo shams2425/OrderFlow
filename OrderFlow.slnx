@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/BackendServices/" />
+  <Folder Name="/BackendServices/OrderService/">
+    <Project Path="BackendServices/OrderService/OrderService.API/OrderService.API.csproj" />
+    <Project Path="BackendServices/OrderService/OrderService.Core/OrderService.Core.csproj" />
+    <Project Path="BackendServices/OrderService/OrderService.Infrastructure/OrderService.Infrastructure.csproj" />
+  </Folder>
+</Solution>
