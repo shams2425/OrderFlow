@@ -1,9 +1,5 @@
-using Microsoft.EntityFrameworkCore;
-using OrderService.Core.Interfaces;
-using OrderService.Core.Mappers;
-using AutoMapper;
-using OrderService.Infrastructure.Data;
-using OrderService.Infrastructure.Repositories;
+using OrderService.Core;
+using OrderService.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,14 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddAutoMapper(cfg => cfg.AddProfile<OrderMappingProfile>());
-
-builder.Services.AddDbContext<OrderDbContext>(opt =>
-opt.UseSqlServer(builder.Configuration.GetConnectionString("OrderDbConnection"))
-);
-
-builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-
+builder.Services.AddCore();
+builder.Services.AddInfrastructure(builder.Configuration);
 var app = builder.Build();
 
 
