@@ -1,5 +1,10 @@
 <Solution>
   <Folder Name="/BackendServices/" />
+  <Folder Name="/BackendServices/InventoryService/">
+    <Project Path="BackendServices/InventoryService/InventoryService.API/InventoryService.API.csproj" Id="5a0f63cb-8bdc-425a-b072-1f2c148b85a4" />
+    <Project Path="BackendServices/InventoryService/InventoryService.Core/InventoryService.Core.csproj" Id="c280fa6d-4953-4aec-8e81-192676ac727f" />
+    <Project Path="BackendServices/InventoryService/InventoryService.Infrastructure/InventoryService.Infrastructure.csproj" Id="f6fbbfd7-13d7-41fd-82d0-7b9838f49921" />
+  </Folder>
   <Folder Name="/BackendServices/OrderService/">
     <Project Path="BackendServices/OrderService/OrderService.API/OrderService.API.csproj" />
     <Project Path="BackendServices/OrderService/OrderService.Core/OrderService.Core.csproj" />

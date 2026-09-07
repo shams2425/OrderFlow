@@ -3,6 +3,7 @@ using AutoMapper;
 using OrderService.Core.Entities;
 using OrderService.Core.Interfaces;
 using OrderService.Core.DTOs;
+using OrderService.Core.Events;
 
 namespace OrderService.API.Controllers
 {
@@ -12,18 +13,24 @@ namespace OrderService.API.Controllers
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;
+        private readonly IEventPublisher _eventPublisher;
 
-        public OrdersController(IOrderRepository orderRepository, IMapper mapper)
+        public OrdersController(IOrderRepository orderRepository, IMapper mapper, IEventPublisher eventPublisher)
         {
             _orderRepository = orderRepository;
             _mapper = mapper;
+            _eventPublisher = eventPublisher;
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateOrder([FromBody] CreateOrderDto dto)
         {
-            var order = _mapper.Map<Orders>(dto);
-            var created = await _orderRepository.CreateOrderAsync(order);
+            Orders order = _mapper.Map<Orders>(dto);
+            Orders created = await _orderRepository.CreateOrderAsync(order);
+
+           OrderPlacedEvent orderPlacedEvent = _mapper.Map<OrderPlacedEvent>(created);
+           await _eventPublisher.Publish(orderPlacedEvent, "order-placed-queue");
+
             return Ok(_mapper.Map<OrderResponseDto>(created));
         }
 
