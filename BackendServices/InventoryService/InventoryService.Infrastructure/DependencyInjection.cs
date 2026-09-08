@@ -1,4 +1,5 @@
 ﻿using InventoryService.Infrastructure.Data;
+using InventoryService.Infrastructure.Messaging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +15,9 @@ public static class DependencyInjection
         {
             opt.UseSqlServer(connectionString);
         });
+        return services;
+
+        services.AddHostedService<OrderPlacedConsumer>();
         return services;
     }
 }
