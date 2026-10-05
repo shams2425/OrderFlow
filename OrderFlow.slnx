@@ -10,4 +10,10 @@
     <Project Path="BackendServices/OrderService/OrderService.Core/OrderService.Core.csproj" />
     <Project Path="BackendServices/OrderService/OrderService.Infrastructure/OrderService.Infrastructure.csproj" />
   </Folder>
+  <Folder Name="/Frontend/">
+    <Project Path="Frontend/OrderFlow-Frontend/orderflow-frontend.esproj">
+      <Build />
+      <Deploy />
+    </Project>
+  </Folder>
 </Solution>

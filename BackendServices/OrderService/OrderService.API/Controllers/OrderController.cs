@@ -4,11 +4,13 @@ using OrderService.Core.Entities;
 using OrderService.Core.Interfaces;
 using OrderService.Core.DTOs;
 using OrderService.Core.Events;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OrderService.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+   
     public class OrdersController : ControllerBase
     {
         private readonly IOrderRepository _orderRepository;

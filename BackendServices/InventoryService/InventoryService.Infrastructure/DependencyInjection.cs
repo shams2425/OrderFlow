@@ -11,13 +11,14 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         string connectionString = configuration.GetConnectionString("InventoryDbConnection")!;
+
         services.AddDbContext<InventoryDbContext>(opt =>
         {
             opt.UseSqlServer(connectionString);
         });
-        return services;
 
         services.AddHostedService<OrderPlacedConsumer>();
+
         return services;
     }
 }
